@@ -1,0 +1,49 @@
+[
+  {
+    "name": "ExampleServiceLogin",
+    "method": "POST",
+    "url": "https://example.com/api/login",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body_type": "json",
+    "body": {
+      "email_field": "email",
+      "password_field": "password",
+      "password_value": "RandomPass123!"
+    },
+    "success_indicator": {
+      "type": "contains",
+      "field": "text",
+      "value": "Invalid password" 
+    },
+    "not_found_indicator": {
+      "type": "contains",
+      "field": "text",
+      "value": "User not found"
+    },
+    "timeout": 10
+  },
+  {
+    "name": "ExampleServicePasswordReset",
+    "method": "POST",
+    "url": "https://example.com/api/password/reset",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body_type": "json",
+    "body": {
+      "email_field": "email"
+    },
+    "success_indicator": {
+      "type": "status_code",
+      "value": 200
+    },
+    "not_found_indicator": {
+      "type": "contains",
+      "field": "text",
+      "value": "email not found"
+    },
+    "timeout": 10
+  }
+]
